@@ -1,7 +1,7 @@
 class Task:
 
-    def __init__(self, id: int, title: str, description: str, status: str):
-        self.id = id
+    def __init__(self, title: str, description: str, status: str):
+        self.id = None
         self.title = title
         self.description = description
         self.status = status
