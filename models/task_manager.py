@@ -1,4 +1,30 @@
-class TaskManager:
+from abc import abstractmethod
+
+
+class AbstractTaskManager:
+
+    @abstractmethod
+    def get_tasks(self):
+        pass
+
+    @abstractmethod
+    def add_task(self, task):
+        pass
+
+    @abstractmethod
+    def get_task_by_id(self, task_id):
+        pass
+
+    @abstractmethod
+    def delete_task_by_id(self, task_id):
+        pass
+
+    @abstractmethod
+    def clear_all_tasks(self):
+        pass
+
+
+class MemoryTaskManager(AbstractTaskManager):
 
     def __init__(self):
         self.generated_id = 1
@@ -24,6 +50,9 @@ class TaskManager:
             return None
 
         del self.tasks[task_index]
+
+    def clear_all_tasks(self):
+        self.tasks = []
 
     def _get_task_index_by_id(self, task_id):
         for index, task in enumerate(self.tasks):

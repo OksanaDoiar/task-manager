@@ -1,19 +1,16 @@
 from flask import Flask, request, jsonify
 
 from models.task import Task
-from models.task_manager import TaskManager
+from models.task_manager import MemoryTaskManager
 
 STATUS_NOT_FOUND = 404
-
 STATUS_CREATED = 201
-
 STATUS_BAD_REQUEST = 400
-
 STATUS_OK = 200
 
 app = Flask(__name__)
 
-task_manager = TaskManager()
+task_manager = MemoryTaskManager()
 
 
 @app.route('/', methods=['GET'])
